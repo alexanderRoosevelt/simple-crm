@@ -1,0 +1,20 @@
+name: CD pipeline
+
+on:
+  workflow_run:
+    workflows:  [ "building company ci/cd" ]
+    types:
+      - completed
+jobs:
+
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+      - name: Pull Docker image
+        run: sudo docker pull alexanderroosevelt/building-company:latest
+      - name: Delete Old docker container
+        run: sudo docker rm -f building-company-container || true
+      - name: Run Docker Container
+        run: sudo docker run -d -p 8080:8080 --name building-company-container alexanderroosevelt/building-company
