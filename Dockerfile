@@ -2,7 +2,7 @@
 FROM openjdk:17-jdk-alpine
 
 # Expose the port that the application will run on
-EXPOSE 8081
+EXPOSE 8080
 
 # Copy the compiled JAR file into the container
 ADD target/building-company.jar building-company.jar

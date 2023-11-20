@@ -2,7 +2,7 @@ name: CD pipeline
 
 on:
   workflow_run:
-    workflows:  [ "building company ci/cd" ]
+    workflows:  [ "CI Pipeline" ]
     types:
       - completed
 jobs:
@@ -17,4 +17,4 @@ jobs:
       - name: Delete Old docker container
         run: sudo docker rm -f building-company-container || true
       - name: Run Docker Container
-        run: sudo docker run -d -p 8081:8081 --name building-company-container alexanderroosevelt/building-company
+        run: sudo docker run -d -p 8080:8080 --name building-company-container alexanderroosevelt/building-company
